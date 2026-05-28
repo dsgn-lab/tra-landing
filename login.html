@@ -11,7 +11,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --cream: #f4ebe4;
+            --cream: #ffffff;
             --green: #064734;
             --green-mid: #0d7a57;
             --leaf: #e0ffc2;
@@ -94,13 +94,16 @@
         }
 
         .brand {
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 0.22em;
-            color: white;
             text-decoration: none;
             display: inline-block;
             margin-bottom: 52px;
+        }
+
+        .brand img {
+            height: 36px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
         }
 
         .left-headline {
@@ -390,7 +393,7 @@
         <!-- LEFT PANEL -->
         <div class="panel-left">
             <div class="left-top">
-                <a href="index.html" class="brand">T.R.A</a>
+                <a href="index.html" class="brand"><img src="logo.png" alt="The Review Agency"></a>
                 <h2 class="left-headline">Welcome<br>back to your<br><em>dashboard.</em></h2>
                 <p class="left-sub">Track reviews, monitor removals, and manage your brand reputation — all in one place.</p>
             </div>
