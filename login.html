@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — T.R.A</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --cream: #f4ebe4;
+            --green: #064734;
+            --green-mid: #0d7a57;
+            --leaf: #e0ffc2;
+            --dark: #1a1714;
+            --gray: #6b7280;
+            --mid: #9ca3af;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--cream);
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        /* ── CARD ── */
+        .card {
+            display: flex;
+            width: 960px;
+            max-width: 100%;
+            min-height: 580px;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow:
+                0 2px 4px rgba(0,0,0,0.04),
+                0 8px 24px rgba(0,0,0,0.08),
+                0 24px 64px rgba(0,0,0,0.1);
+        }
+
+        /* ── LEFT PANEL ── */
+        .panel-left {
+            width: 42%;
+            background: linear-gradient(to bottom,
+                #010d08 0%,
+                #022518 22%,
+                #064734 52%,
+                #0d7a57 80%,
+                #1a9e72 100%
+            );
+            padding: 48px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-left::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(224,255,194,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .panel-left::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -60px;
+            width: 240px; height: 240px;
+            background: radial-gradient(circle, rgba(13,122,87,0.35) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .left-top {
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.22em;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 52px;
+        }
+
+        .left-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+        }
+
+        .left-headline em { font-style: italic; color: var(--leaf); }
+
+        .left-sub {
+            font-size: 14px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.65;
+            max-width: 220px;
+        }
+
+        .left-bottom {
+            position: relative;
+            z-index: 2;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .step:last-child {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .step-badge {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            background: rgba(224,255,194,0.15);
+            border: 1px solid rgba(224,255,194,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--leaf);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-text strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 2px;
+        }
+
+        .step-text span {
+            font-size: 12px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.5;
+        }
+
+        /* ── RIGHT PANEL ── */
+        .panel-right {
+            flex: 1;
+            background: white;
+            padding: 52px 52px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-header {
+            margin-bottom: 36px;
+        }
+
+        .form-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 18px;
+            background: #f9fafb;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .form-group input::placeholder { color: var(--mid); }
+
+        .form-group input:focus {
+            border-color: var(--green);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(6,71,52,0.1);
+        }
+
+        .pwd-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--mid);
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .pwd-toggle:hover { color: var(--green); }
+
+        .form-group input[type="password"] { padding-right: 44px; }
+
+        .form-row-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            margin-top: -6px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        .remember input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--green);
+            cursor: pointer;
+        }
+
+        .forgot {
+            font-size: 13px;
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .forgot:hover { opacity: 0.75; }
+
+        .btn-signin {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #064734, #0d7a57);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 4px 18px rgba(6,71,52,0.32);
+            letter-spacing: 0.01em;
+        }
+
+        .btn-signin:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(6,71,52,0.38);
+        }
+
+        .form-footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .form-footer a {
+            color: var(--green);
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .form-footer a:hover { opacity: 0.75; }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 28px 0;
+            color: var(--mid);
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        /* ── NAV BACK ── */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--dark); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .card { flex-direction: column; border-radius: 20px; }
+            .panel-left { width: 100%; padding: 36px 32px; }
+            .left-headline { font-size: 28px; }
+            .panel-right { padding: 36px 32px; }
+            .steps { flex-direction: row; gap: 12px; overflow-x: auto; }
+            .step { flex-direction: column; gap: 8px; border-top: none; border-left: 1px solid rgba(255,255,255,0.1); padding: 0 12px; }
+            .step:last-child { border-bottom: none; border-left: 1px solid rgba(255,255,255,0.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to T.R.A
+    </a>
+
+    <div class="card">
+
+        <!-- LEFT PANEL -->
+        <div class="panel-left">
+            <div class="left-top">
+                <a href="index.html" class="brand">T.R.A</a>
+                <h2 class="left-headline">Welcome<br>back to your<br><em>dashboard.</em></h2>
+                <p class="left-sub">Track reviews, monitor removals, and manage your brand reputation — all in one place.</p>
+            </div>
+
+            <div class="left-bottom">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-badge">1</div>
+                        <div class="step-text">
+                            <strong>Live review feed</strong>
+                            <span>New reviews across all platforms, in real time</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-badge">2</div>
+                        <div class="step-text">
+                            <strong>Removal tracker</strong>
+                            <span>Status updates on every dispute and appeal</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-badge">3</div>
+                        <div class="step-text">
+                            <strong>Monthly reports</strong>
+                            <span>Download detailed performance snapshots</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="panel-right">
+            <div class="form-header">
+                <h1>Sign in</h1>
+                <p>Enter your credentials to access your T.R.A client portal.</p>
+            </div>
+
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="you@yourcompany.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrap">
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+                        <button type="button" class="pwd-toggle" onclick="togglePassword()" aria-label="Toggle password visibility">
+                            <svg id="eye-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M1 9s3-5.5 8-5.5S17 9 17 9s-3 5.5-8 5.5S1 9 1 9z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                                <circle cx="9" cy="9" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-row-meta">
+                    <label class="remember">
+                        <input type="checkbox" id="remember">
+                        Keep me signed in
+                    </label>
+                    <a href="#" class="forgot">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-signin">Sign In →</button>
+            </form>
+
+            <div class="form-footer">
+                Not yet a client? <a href="index.html#contact">Get in touch</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.btn-signin');
+            btn.textContent = 'Signing in…';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.textContent = 'Sign In →';
+                btn.disabled = false;
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
